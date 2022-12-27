@@ -20,7 +20,7 @@ export default function ImgMediaCard() {
   
   
   return (
-    <Box sx={{display:'flex',justifyContent:'center', mt: 25}}>
+    <Box sx={{display:'flex',justifyContent:'center', mt: '15%'}}>
     <Card sx={{ maxWidth: 800,height:400,display:'flex',flexDirection: 'row'}}>
         <CardMedia
         component="img"

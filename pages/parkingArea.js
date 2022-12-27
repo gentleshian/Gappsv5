@@ -424,7 +424,7 @@ export default function ParkingArea() {
       </Box>
       <Box sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center', pb: 2 }}>
         <Typography sx={{ fontWeight: 'bold', ml: '5%', color: 'black', fontSize: '17px' }}> Area floors</Typography>
-        <Typography sx={{ color: 'black', fontSize: '17px', ml: 'auto' }}>Last updated: {lastRefreshed.toLocaleString()}</Typography>
+        <Typography sx={{ color: 'black', fontSize: '17px', ml: '60%' }}>Last updated: {lastRefreshed.toLocaleString()}</Typography>
         <Button variant="outlined" onClick={refresh} sx={{ fontSize: '17px', borderRadius: 2, color: "#61B6EC", ml: 2, mr: 10 }} >Refresh now</Button>
       </Box>
       <Box sx={{ width: '90%', margin: 'auto' }}>
@@ -436,7 +436,6 @@ export default function ParkingArea() {
     </React.Fragment>
   )
 }
-
 
 
 

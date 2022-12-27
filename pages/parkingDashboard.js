@@ -206,7 +206,7 @@ export default function ParkingDashboard() {
               onChange={() => {
                 setSelected(!selected);
               }}
-              sx={{ ml: 100, borderColor: '#61B6EC' }}
+              sx={{ ml: 'auto', borderColor: '#61B6EC' }}
             >
               <Typography sx={{ color: "#61B6EC", fontSize: 17 }}>Switch to inactive</Typography>
             </ToggleButton>
@@ -262,7 +262,7 @@ export default function ParkingDashboard() {
               <MenuItem value={false}>Inactive</MenuItem>
             </Select>
           </FormControl>
-          <Box sx={{ ml: '63%' }}>
+          <Box sx={{ ml: 'auto',mr:'4%' }}>
             <Button
               id="demo-customized-button"
               aria-controls={open ? 'demo-customized-menu' : undefined}
@@ -380,7 +380,7 @@ export default function ParkingDashboard() {
         </Paper>
       </TabPanel>
               
-      <Image src={parkingdashboard_image_source} alt="success_logo" width={500}  style={{ position: 'relative', marginLeft:"67%" }}/>
+      <Image src={parkingdashboard_image_source} alt="success_logo" width={500}  style={{ position: 'relative', marginLeft:"74%",paddingTop:'3%' }}/>
      
     </React.Fragment>
 
