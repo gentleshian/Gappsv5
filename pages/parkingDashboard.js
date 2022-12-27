@@ -113,7 +113,7 @@ const StyledMenu = styled((props) => (
 
 export default function ParkingDashboard() {
 
-  const {parkingAreaName,parkingAreaAddress,dayRestriction,checkInOptions,earliestDateRestriction,cancellationRestriction} = useGlobalContext()
+  const {parkingAreaName,parkingAreaAddress,dayRestriction,checkInOptions,earliestDateRestriction,cancellationRestriction,RTE} = useGlobalContext()
   const router = useRouter();
   const [selected, setSelected] = React.useState(false);
   const [selectedParking, setSelectedParking] = React.useState(false);
@@ -376,6 +376,7 @@ export default function ParkingDashboard() {
           </Box>
           <Box>
             <Typography sx={{ fontWeight: 'bold' }}>Policies</Typography>
+            <Typography>{RTE}</Typography>
           </Box>
         </Paper>
       </TabPanel>

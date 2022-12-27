@@ -103,10 +103,15 @@ export default function Checkout() {
     return response.json(); // parses JSON response into native JavaScript objects
   }
 
+  const week = [1,2,3,4,5]
 
 if (activeStep===3) {
   // useEffect(() => {
   //   const getData = () => {
+    
+// week.map((week,weekIndex)=>())
+
+    
     calendarRestriction.map((day,dayIndex)=>(parkingAreaName.map((parkingArea,index)=>(
       postParkingArea('https://zh66xn42vk.execute-api.ap-southeast-1.amazonaws.com/stage/parkingarea',
         {
@@ -125,12 +130,19 @@ if (activeStep===3) {
           "dailyCheckInRestriction" : dailyCheckInRestriction,
           "dailyCheckInAndOutRestriction" : dailyCheckInAndOutRestriction,
           "calendarRestriction":day,
+          "week":week,
           "service":"Parking"
         })
         .then((data) => {
           console.log(data); // JSON data parsed by `data.json()` call
         })
     ))))
+
+
+
+
+
+
     // parkingAreaName.map((parkingArea,index)=>(
     //   postParkingArea('https://zh66xn42vk.execute-api.ap-southeast-1.amazonaws.com/stage/parkingarea',
     //     {
@@ -221,7 +233,7 @@ if (activeStep===3) {
               <Box sx={{ justifyContent: 'center', mt: 5 }}>
                 <Image src={success_logo_source} alt="success_logo" width={135} height={135} />
               </Box>
-              <DialogTitle id="responsive-dialog-title">
+              <DialogTitle id="responsive-dialog-title" sx={{justifyContent:'center'}}>
                 {"Service Setup Complete"}
               </DialogTitle>
               <DialogContent sx={{ pl: 5, pr: 5 }}>
@@ -233,9 +245,11 @@ if (activeStep===3) {
               {/* <Button autoFocus onClick={handleClose}>
                       Disagree
                     </Button> */}
-              <Button onClick={handleClose} autoFocus variant='contained' sx={{ backgroundColor: '#5BADFA', maxWidth: 200, mb: 5, ml: 21.5 }}>
+                  <Box sx={{justifyContent: 'center'}}>
+              <Button onClick={handleClose} autoFocus variant='contained' sx={{ backgroundColor: '#5BADFA', maxWidth: 200, mb: 5,}}>
                 Okay, got it!
               </Button>
+              </Box>
               {/* </DialogActions> */}
             </Dialog>
           </React.Fragment>

@@ -38,6 +38,9 @@ function MyApp({ Component, pageProps }) {
  const [cancellationRestriction, setCancellationRestriction] = useState('')
  const [earliestDateRestriction, setEarliestDateRestriction] = useState('') 
  const [calendarRestriction, setCalendarRestriction] = useState([])
+ const [RTE,setRTE] = useState('')
+ const [bookingStart, setBookingStart] = useState([])
+ const [bookingEnd, setBookingEnd] = useState([])
 
 
   
@@ -79,7 +82,13 @@ function MyApp({ Component, pageProps }) {
       earliestDateRestriction,
       setEarliestDateRestriction,
       calendarRestriction,
-      setCalendarRestriction
+      setCalendarRestriction,
+      RTE,
+      setRTE,
+      bookingStart,
+      bookingEnd,
+      setBookingStart,
+      setBookingEnd
       }}>
     <ResponsiveAppBar />
     <Component {...pageProps} />

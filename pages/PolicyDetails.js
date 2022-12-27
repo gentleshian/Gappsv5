@@ -88,12 +88,12 @@ export default function PolicyDetails() {
   //   x.map((element) => Array.from({ length: element }, (_, i) => i + 1))
   // );
 
-//  [[2,1],[3,2]] to [[[1,2],[1]],[[1,2,3],[1,2]]]
-const arrayParkingFields = arrayParkingSlots.map(subarray => {
-  return subarray.map(value => [[value], subarray]);
-});
+  //  [[2,1],[3,2]] to [[[1,2],[1]],[[1,2,3],[1,2]]]
+  const arrayParkingFields = arrayParkingSlots.map(subarray => {
+    return subarray.map(value => [[value], subarray]);
+  });
 
-const arrayParking = arrayParkingFields.map((x) =>
+  const arrayParking = arrayParkingFields.map((x) =>
     x.map((y) =>
       y.map((element) => Array.from({ length: element }, (_, i) => i + 1))
     )
@@ -120,7 +120,7 @@ const arrayParking = arrayParkingFields.map((x) =>
   }
 
   // const [fieldValues, setFieldValues] = React.useState([]);
-  
+
 
   // // Function to handle changes to the text field values
   // const handleFieldValuesChange = (index, event) => {
@@ -196,11 +196,11 @@ const arrayParking = arrayParkingFields.map((x) =>
 
 
 
-  
 
 
 
-// FOR DUPLICATES
+
+  // FOR DUPLICATES
   const duplicates = fieldValues.filter((value, index) => fieldValues.indexOf(value) !== index);
 
   const seenValues = {};
@@ -220,9 +220,9 @@ const arrayParking = arrayParkingFields.map((x) =>
       seenValues[element] = i;
     }
   }
-// FOR DUPLICATES
+  // FOR DUPLICATES
 
-// FOR BULK
+  // FOR BULK
   const { getRootProps, getInputProps, open, acceptedFiles } = useDropzone({
     // Disable click and keydown behavior
     noClick: true,
@@ -249,7 +249,7 @@ const arrayParking = arrayParkingFields.map((x) =>
       this.parentElement.style.display = 'none';
     });
   }
-//FOR BULK
+  //FOR BULK
 
 
   const [newParkingArea, setNewParkingArea] = React.useState([])
@@ -288,13 +288,13 @@ const arrayParking = arrayParkingFields.map((x) =>
             id="outlined-parkingarea"
             // label="Address (optional)"
             // value={changeAddress}
-            onChange={(event) => handleChangeAddress(indexParkingArea-1, event)}
+            onChange={(event) => handleChangeAddress(indexParkingArea - 1, event)}
             variant="outlined"
             sx={{ width: 900 }}
             placeholder="Enter address"
           />
         </Box>
-        <Box key={indexParkingArea-1}>
+        <Box key={indexParkingArea - 1}>
           {newParkingFloor.map((indexParkingFloor) => (
             <Paper variant="outlined" sx={{ mr: 3, ml: 3, my: { md: 3, lg: 5 }, p: { md: 2, lg: 3 }, backgroundColor: '#FAFAFA' }} key={indexParkingFloor}>
               <Typography variant="subtitle1" sx={{ color: 'black' }} gutterBottom>Area Floor</Typography>
@@ -305,8 +305,8 @@ const arrayParking = arrayParkingFields.map((x) =>
                 // onChange={handleChangeAreaFloor}
                 onChange={(event) =>
                   handleChangeAreaFloor(
-                    indexParkingArea-1,
-                    indexParkingFloor-1,
+                    indexParkingArea - 1,
+                    indexParkingFloor - 1,
                     // indexParkingFloorField-1,
                     event
                   )
@@ -327,8 +327,8 @@ const arrayParking = arrayParkingFields.map((x) =>
                 // value={numberOfSlot}
                 onChange={(event) =>
                   handleChangeNumberOfSlots(
-                    indexParkingArea-1,
-                    indexParkingFloor-1,
+                    indexParkingArea - 1,
+                    indexParkingFloor - 1,
                     // indexParkingFloorField-1,
                     event
                   )
@@ -360,15 +360,15 @@ const arrayParking = arrayParkingFields.map((x) =>
                   <AccordionDetails>
                     <Paper variant="outlined" sx={{ mr: 5, ml: 5, my: { md: 1, lg: 3 }, p: { md: 2, lg: 3 }, backgroundColor: '#EFEFEF' }}>
                       {/* {textFields} */}
-                      {arrayParking[indexParkingArea-1][indexParkingFloor-1][0].map((indexFields) => (
+                      {arrayParking[indexParkingArea - 1][indexParkingFloor - 1][0].map((indexFields) => (
                         <Box key={indexFields} sx={{ mb: 3, display: 'flex', flexDirection: "column", alignItems: 'left', alignContent: 'stretch', ml: 2 }}>
                           <Typography variant="subtitle1" sx={{ color: 'black' }} gutterBottom>Slot name {indexFields}</Typography>
                           <TextField
-                            key={indexFields }
+                            key={indexFields}
                             onChange={(event) => handleFieldValuesChange(
-                              indexParkingArea-1,
-                              indexParkingFloor-1,
-                              indexFields-1, event)}
+                              indexParkingArea - 1,
+                              indexParkingFloor - 1,
+                              indexFields - 1, event)}
                             variant="outlined"
                             sx={{ backgroundColor: 'white', width: 326 }}
                             placeholder="Enter Slot Name"
@@ -486,10 +486,10 @@ const arrayParking = arrayParkingFields.map((x) =>
           </Paper>)
         : null
       }
-
-      <Button variant='text' sx={{ textDecoration: 'underline' }} onClick={addParkingArea}>
+      {addParking === "list" ? (<Button variant='text' sx={{ textDecoration: 'underline' }} onClick={addParkingArea}>
         + Add another parking area
-      </Button>
+      </Button>) : null}
+
 
     </React.Fragment>
   );

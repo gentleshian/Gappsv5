@@ -17,14 +17,15 @@ import useLocalStorage from '../hooks/useLocalStorage';
 import { useGlobalContext } from '../context/global';
 // import RichTextEditor from "react-rte";
 import MUIRichTextEditor from "mui-rte";
-import { convertToRaw } from 'draft-js'
+// import { convertToRaw } from 'draft-js'
+import { createTheme, ThemeProvider } from "@mui/material/styles";
 
 
 
 
 
 export default function AddressForm() {
-  const { setPaidAmount, setGcashNumber, setPaymentRestriction, setCancellationRestriction, setEarliestDateRestriction } = useGlobalContext()
+  const { setPaidAmount, setGcashNumber, setPaymentRestriction, setCancellationRestriction, setEarliestDateRestriction, setRTE } = useGlobalContext()
 
   // amount to be paid
   const [value, setValue] = React.useState('');
@@ -148,8 +149,64 @@ const handleChangeRTE = (event) => {
   // const rteContent = convertToRaw(event.getCurrentContent()) // for rte content with text formating
   // rteContent && setValueRTE(JSON.stringify(rteContent))
   setValueRTE(plainText);
+  setRTE(plainText)
 };
 console.log(valueRTE);
+
+const myTheme = createTheme({
+  palette: {
+    primary: {
+      main: "#000000"
+    }
+  }
+});
+
+Object.assign(myTheme, {
+  overrides: {
+    MUIRichTextEditor: {
+      root: {
+        backgroundColor: "white"
+      },
+      toolbar: {
+        border: "1px solid gray",
+        backgroundColor: "darkgray",
+        borderTopLeftRadius: "18px",
+        borderTopRightRadius: "18px",
+        borderBottomLeftRadius: "4px",
+        borderBottomRightRadius: "4px"
+      },
+      container: {
+        display: "flex",
+        flexDirection: "column"
+      },
+      editor: {
+        backgroundColor: "white",
+        padding: "20px",
+        height: "200px",
+        maxHeight: "200px",
+        overflow: "auto",
+        borderRight: "1px solid gray",
+        borderBottom: "1px solid gray",
+        borderLeft: "1px solid gray",
+        borderBottomLeftRadius: "18px",
+        borderBottomRightRadius: "18px"
+      },
+      placeHolder: {
+        backgroundColor: "white",
+        paddingLeft: 20,
+        width: "inherit",
+        borderRight: "1px solid gray",
+        borderTop: "1px solid gray",
+        borderLeft: "1px solid gray",
+        marginTop: -3
+      },
+      anchorLink: {
+        color: "#333333",
+        textDecoration: "underline"
+      }
+    }
+  }
+});
 
 
   return (
@@ -281,12 +338,14 @@ console.log(valueRTE);
               toolbarConfig={toolbarConfig}
               className="editor"
               placeholder="Enter your text here..." /> */}
+               <ThemeProvider theme={myTheme}>
               <MUIRichTextEditor
       label="Type something here..."
       onSave={save}
       inlineToolbar={true}
       onChange={handleChangeRTE}
     />
+    </ThemeProvider>
           </Box>
 
         </Box>

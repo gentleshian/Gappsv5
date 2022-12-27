@@ -23,7 +23,7 @@ import { useGlobalContext } from '../context/global';
 
 
 export default function ServiceSetting() {
-  const {setCheckInOptions,setCheckInRestriction,setCheckInAndOutRestriction,setDailyCheckInRestriction,setDailyCheckInAndOutRestriction,setCalendarRestriction} = useGlobalContext();
+  const {setCheckInOptions,setCheckInRestriction,setCheckInAndOutRestriction,setDailyCheckInRestriction,setDailyCheckInAndOutRestriction,setCalendarRestriction,bookingStart,bookingEnd} = useGlobalContext();
   const [weekday, setWeekday] = React.useState([]);
 
   const handleWeekday = (event,newWeekday) => {
@@ -67,115 +67,117 @@ export default function ServiceSetting() {
   };
 
 
-  const [bookingScheduleStart, setBookingScheduleStart] = React.useState([]);
+  // const [bookingScheduleStart, setBookingScheduleStart] = React.useState([]);
 
-  // Function to handle changes to the text field values
-  const handleChangeBookingScheduleStart = (index, event) => {
-    // Create a copy of the field values array
-    const newBookingScheduleStart = [...bookingScheduleStart];
+  // // Function to handle changes to the text field values
+  // const handleChangeBookingScheduleStart = (index, event) => {
+  //   // Create a copy of the field values array
+  //   const newBookingScheduleStart = [...bookingScheduleStart];
 
-    // Update the value at the specified index
-    newBookingScheduleStart[index] = event.target.value;
+  //   // Update the value at the specified index
+  //   newBookingScheduleStart[index] = event.target.value;
 
-    // Update the state variable with the new field values array
-    setBookingScheduleStart(newBookingScheduleStart);
-  };
+  //   // Update the state variable with the new field values array
+  //   setBookingScheduleStart(newBookingScheduleStart);
+  // };
 
-  const [bookingScheduleEnd, setBookingScheduleEnd] = React.useState([]);
+  // const [bookingScheduleEnd, setBookingScheduleEnd] = React.useState([]);
 
-  // Function to handle changes to the text field values
-  const handleChangeBookingScheduleEnd = (index, event) => {
-    // Create a copy of the field values array
-    const newBookingScheduleEnd = [...bookingScheduleEnd];
+  // // Function to handle changes to the text field values
+  // const handleChangeBookingScheduleEnd = (index, event) => {
+  //   // Create a copy of the field values array
+  //   const newBookingScheduleEnd = [...bookingScheduleEnd];
 
-    // Update the value at the specified index
-    newBookingScheduleEnd[index] = event.target.value;
+  //   // Update the value at the specified index
+  //   newBookingScheduleEnd[index] = event.target.value;
 
-    // Update the state variable with the new field values array
-    setBookingScheduleEnd(newBookingScheduleEnd);
-  };
+  //   // Update the state variable with the new field values array
+  //   setBookingScheduleEnd(newBookingScheduleEnd);
+  // };
 
 
 
-  const array = [];
-  const timeArray = ['7:00AM',
-    '7:30 AM',
-    '8:00 AM',
-    '8:30 AM',
-    '9:00 AM',
-    '9:30 AM',
-    '10:00 AM',
-    '10:30 AM',
-    '11:00 AM',
-    '11:30 AM',
-    '12:00 NN',
-    '1:00 PM',
-    '1:30 PM',
-    '2:00 PM',
-    '2:30 PM',
-    '3:00 PM',
-    '3:30 PM',
-    '4:00 PM',
-    '4:30 PM',
-    '5:00 PM',
-    '5:30 PM',
-    '6:00 PM']
-  for (let i = 1; i <= 22; i++) {
-    // Add each number to the array
-    array.push(i);
-  }
-  let MenuItemsStart = array.map((index) => (
-    <MenuItem key={index} value={index}>{timeArray[index]}</MenuItem>))
+  // const array = [];
+  // const timeArray = ['7:00AM',
+  //   '7:30 AM',
+  //   '8:00 AM',
+  //   '8:30 AM',
+  //   '9:00 AM',
+  //   '9:30 AM',
+  //   '10:00 AM',
+  //   '10:30 AM',
+  //   '11:00 AM',
+  //   '11:30 AM',
+  //   '12:00 NN',
+  //   '1:00 PM',
+  //   '1:30 PM',
+  //   '2:00 PM',
+  //   '2:30 PM',
+  //   '3:00 PM',
+  //   '3:30 PM',
+  //   '4:00 PM',
+  //   '4:30 PM',
+  //   '5:00 PM',
+  //   '5:30 PM',
+  //   '6:00 PM']
+  // for (let i = 1; i <= 22; i++) {
+  //   // Add each number to the array
+  //   array.push(i);
+  // }
+  // let MenuItemsStart = array.map((index) => (
+  //   <MenuItem key={index} value={index}>{timeArray[index]}</MenuItem>))
 
-  const subArr = array.slice(bookingScheduleStart)
+  // const subArr = array.slice(bookingScheduleStart)
 
-  let MenuItemsEnd = subArr.map((index) => (
-    <MenuItem key={index} value={index}>{timeArray[index]}</MenuItem>))
+  // let MenuItemsEnd = subArr.map((index) => (
+  //   <MenuItem key={index} value={index}>{timeArray[index]}</MenuItem>))
 
  
 
-  //  console.log(bookingScheduleStart)
-  let bookingDay = weekday.map((index) => (
-    <Box key={index} sx={{ mb: 3, display: 'flex', flexDirection: "row", alignItems: 'center', alignContent: 'stretch' }}>
-      <Box sx={{ width: 100 }}>
-        <Typography sx={{ color: 'black', ml: 3 }}>{index}</Typography>
-      </Box>
-      <FormControl sx={{ my: 2, ml: 3.5, alignItems: 'center' }}>
-        <InputLabel id="demo-simple-select-label">Select time</InputLabel>
-        <Select
-          key={index}
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth-label"
-          // value={bookingScheduleStart[index]}
-          onChange={(event) => handleChangeBookingScheduleStart(index, event)}
-          label="Select time"
-          sx={{ width: 150 }}
-        // placeholder='Select time'
-        >
-          {MenuItemsStart}
-        </Select>
-      </FormControl>
-      <Typography sx={{ color: 'black', ml: 3 }}>-</Typography>
-      <FormControl sx={{ my: 2, ml: 3.5, alignItems: 'center' }}>
-        <InputLabel id="demo-simple-select-label">Select time</InputLabel>
-        <Select
-          key={index}
-          labelId="demo-simple-select-autowidth-label"
-          id="demo-simple-select-autowidth-label"
-          // value={bookingScheduleEnd[index]}
-          onChange={(event) => handleChangeBookingScheduleEnd(index, event)}
-          label="Select time"
-          sx={{ width: 150 }}
-        >
-          {MenuItemsEnd}
-        </Select>
-      </FormControl>
-    </Box>
-  ));
+  // //  console.log(bookingScheduleStart)
+  // let bookingDay = weekday.map((index) => (
+  //   <Box key={index} sx={{ mb: 3, display: 'flex', flexDirection: "row", alignItems: 'center', alignContent: 'stretch' }}>
+  //     <Box sx={{ width: 100 }}>
+  //       <Typography sx={{ color: 'black', ml: 3 }}>{index}</Typography>
+  //     </Box>
+  //     <FormControl sx={{ my: 2, ml: 3.5, alignItems: 'center' }}>
+  //       <InputLabel id="demo-simple-select-label">Select time</InputLabel>
+  //       <Select
+  //         key={index}
+  //         labelId="demo-simple-select-autowidth-label"
+  //         id="demo-simple-select-autowidth-label"
+  //         // value={bookingScheduleStart[index]}
+  //         onChange={(event) => handleChangeBookingScheduleStart(index, event)}
+  //         label="Select time"
+  //         sx={{ width: 150 }}
+  //       // placeholder='Select time'
+  //       >
+  //         {MenuItemsStart}
+  //       </Select>
+  //     </FormControl>
+  //     <Typography sx={{ color: 'black', ml: 3 }}>-</Typography>
+  //     <FormControl sx={{ my: 2, ml: 3.5, alignItems: 'center' }}>
+  //       <InputLabel id="demo-simple-select-label">Select time</InputLabel>
+  //       <Select
+  //         key={index}
+  //         labelId="demo-simple-select-autowidth-label"
+  //         id="demo-simple-select-autowidth-label"
+  //         // value={bookingScheduleEnd[index]}
+  //         onChange={(event) => handleChangeBookingScheduleEnd(index, event)}
+  //         label="Select time"
+  //         sx={{ width: 150 }}
+  //       >
+  //         {MenuItemsEnd}
+  //       </Select>
+  //     </FormControl>
+  //   </Box>
+  // ));
 
   // console.log(weekday)
   // console.log(bookingScheduleStart)
   // console.log(bookingScheduleEnd)
+  console.log(bookingStart)
+  console.log(bookingEnd)
   return (
 
     <React.Fragment>
@@ -219,15 +221,15 @@ export default function ServiceSetting() {
         <Box sx={{ ml: 3, mt: 2 }}>
           {weekday.length !== 0 ? (<Typography component="b1" variant="b1" sx={{ color: 'black', display: 'block' }} gutterBottom>Set booking schedule</Typography>) : null}
           <Box>
-            {/* {weekday.includes("monday") ? (<BookingAvailability day="Monday" />) : null}
-            {weekday.includes("tuesday") ? (<BookingAvailability day="Tuesday" />) : null}
-            {weekday.includes("wednesday") ? (<BookingAvailability day="Wednesday" />) : null}
-            {weekday.includes("thursday") ? (<BookingAvailability day="Thursday" />) : null}
-            {weekday.includes("friday") ? (<BookingAvailability day="Friday" />) : null}
-            {weekday.includes("saturday") ? (<BookingAvailability day="Saturday" />) : null}
-            {weekday.includes("sunday") ? (<BookingAvailability day="Sunday" />) : null} */}
+            {weekday.includes("Monday") ? (<BookingAvailability day="Monday" />) : null}
+            {weekday.includes("Tuesday") ? (<BookingAvailability day="Tuesday" />) : null}
+            {weekday.includes("Wednesday") ? (<BookingAvailability day="Wednesday" />) : null}
+            {weekday.includes("Thursday") ? (<BookingAvailability day="Thursday" />) : null}
+            {weekday.includes("Friday") ? (<BookingAvailability day="Friday" />) : null}
+            {weekday.includes("Saturday") ? (<BookingAvailability day="Saturday" />) : null}
+            {weekday.includes("Sunday") ? (<BookingAvailability day="Sunday" />) : null}
             {/* <BookingAvailability day="Monday" /> */}
-            {bookingDay}
+            {/* {bookingDay} */}
           </Box>
         </Box>
       </Paper>
@@ -260,14 +262,16 @@ export default function ServiceSetting() {
                     Latest check-in time
                   </Typography>
                 </Box>
-                <FormControl sx={{ my: 3, minWidth: 250, display: 'inline' }}>
-                  {/* <InputLabel id="demo-simple-select-autowidth-label">days</InputLabel> */}
+                <FormControl sx={{ my: 3, minWidth: 250, display: 'inline' }} fullwidth>
+                  {/* <InputLabel id="demo-simple-select-autowidth-label">Select time</InputLabel> */}
                   <Select
                     labelId="demo-simple-select-autowidth-label"
                     id="demo-simple-select-autowidth-label"
                     value={latestBookingScheduleCheckIn}
                     onChange={handleChangeLatestBookingScheduleCheckIn}
-                    // label=""
+                    // label="Select time"
+                    // placeholder="Select time"
+                    
                     sx={{ width: 150 }}
                   >
 
@@ -312,8 +316,10 @@ export default function ServiceSetting() {
                     value={latestBookingScheduleCheckInAndOut}
                     onChange={handleChangeLatestBookingScheduleCheckInAndOut}
                     // label=""
+                    // placeholder="Select time"
                     sx={{ width: 150 }}
                   >
+                    <InputLabel>Select time</InputLabel>
 
                     <MenuItem value={'7:00 AM'}>7:00 AM</MenuItem>
                     <MenuItem value={'7:30 AM'}>7:30 AM</MenuItem>

@@ -6,20 +6,25 @@ import MenuItem from '@mui/material/MenuItem';
 import Box from '@mui/material/Box'
 import InputLabel from '@mui/material/InputLabel';
 import useLocalStorage from '../hooks/useLocalStorage';
+import { useGlobalContext } from '../context/global';
 
 
 
 
 const BookingAvailability = props => {
+  const {bookingStart,setBookingStart,bookingEnd,setBookingEnd} = useGlobalContext();
 
-  const [bookingScheduleStart, setBookingScheduleStart] = useLocalStorage('bookingScheduleStart', '');
+
+  const [bookingScheduleStart, setBookingScheduleStart] = React.useState('');
   const handleChangeBookingScheduleStart = (event) => {
     setBookingScheduleStart(event.target.value);
+    setBookingStart([...bookingStart,event.target.value])
   };
 
-  const [bookingScheduleEnd, setBookingScheduleEnd] = useLocalStorage('bookingScheduleEnd', '');
+  const [bookingScheduleEnd, setBookingScheduleEnd] = React.useState('');
   const handleChangeBookingScheduleEnd = (event) => {
     setBookingScheduleEnd(event.target.value);
+    setBookingEnd([...bookingEnd,event.target.value])
   };
 
   const array = [];
