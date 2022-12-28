@@ -6,11 +6,7 @@ frontend:
         - npm install --force
     build:
       commands:
-        - npm run dev
         - npm run build
-    deploy:
-      commands:
-        - npm run deploy
   artifacts:
     baseDirectory: .next
     files:
