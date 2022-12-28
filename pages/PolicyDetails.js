@@ -267,8 +267,8 @@ export default function PolicyDetails() {
   //   dictionary[parkingArea[i]] = arrayParkingAreaFloor[i];
   // }
 
-  let createParkingAreas = newParkingArea.map((indexParkingArea) => (
-    <Box sx={{ mb: "4%" }} >
+  let createParkingAreas = newParkingArea.map((parkingArea,indexParkingArea) => (
+    <Box sx={{ mb: "4%" }} key={indexParkingArea-1} >
       <Paper variant="outlined" sx={{ my: { md: 0, lg: 0 }, p: { md: 2, lg: 3 } }}>
         <Box sx={{ ml: 3 }}>
           <Typography variant="subtitle1" sx={{ color: 'black' }} gutterBottom> Parking area name </Typography>
@@ -294,8 +294,8 @@ export default function PolicyDetails() {
             placeholder="Enter address"
           />
         </Box>
-        <Box key={indexParkingArea - 1}>
-          {newParkingFloor.map((indexParkingFloor) => (
+        <Box >
+          {newParkingFloor.map((parkingFloor,indexParkingFloor) => (
             <Paper variant="outlined" sx={{ mr: 3, ml: 3, my: { md: 3, lg: 5 }, p: { md: 2, lg: 3 }, backgroundColor: '#FAFAFA' }} key={indexParkingFloor}>
               <Typography variant="subtitle1" sx={{ color: 'black' }} gutterBottom>Area Floor</Typography>
               <TextField
@@ -360,7 +360,7 @@ export default function PolicyDetails() {
                   <AccordionDetails>
                     <Paper variant="outlined" sx={{ mr: 5, ml: 5, my: { md: 1, lg: 3 }, p: { md: 2, lg: 3 }, backgroundColor: '#EFEFEF' }}>
                       {/* {textFields} */}
-                      {arrayParking[indexParkingArea - 1][indexParkingFloor - 1][0].map((indexFields) => (
+                      {arrayParking[indexParkingArea - 1][indexParkingFloor - 1][0].map((fields,indexFields) => (
                         <Box key={indexFields} sx={{ mb: 3, display: 'flex', flexDirection: "column", alignItems: 'left', alignContent: 'stretch', ml: 2 }}>
                           <Typography variant="subtitle1" sx={{ color: 'black' }} gutterBottom>Slot name {indexFields}</Typography>
                           <TextField
